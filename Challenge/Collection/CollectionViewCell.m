@@ -9,6 +9,8 @@
 #import "CollectionViewCell.h"
 #import "Utilities.h"
 #import "NSError+Log.h"
+#import "Cache.h"
+
 
 
 @interface CollectionViewCell ()
@@ -23,8 +25,8 @@
 - (id)initWithFrame:(CGRect)frame {
 
     self = [super initWithFrame:frame];
-    self.backgroundColor = [UIColor whiteColor];
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame)), 5, 10)];
+    self.backgroundColor = [UIColor darkGrayColor];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame)), 2, 2)];
     self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.imageView.clipsToBounds = YES;
     [self.contentView addSubview:self.imageView];
@@ -41,14 +43,23 @@
 
 #pragma mark - Setters
 
--(void)setImage:(UIImage *)image
-{
+-(void)setImage:(UIImage *)image {
     [self.imageView setImage:image];
 }
 
 
 -(void)setImageAtUrl:(NSString *)urlStr {
     self.imageView.image = [UIImage imageNamed:@"nil.jpg"];
+
+
+
+    if ([Cache isActive]) {
+        NSData *data = [Cache readForLink:urlStr];
+        if (data) {
+            [self updateImageWithData:data];
+            return;
+        }
+    }
 
 
     [Utilities setNetworkActivity:1];
@@ -61,7 +72,13 @@
 
                                NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
                                if (statusCode == 200) {
+
+                                   if ([Cache isActive])
+                                       if (data)
+                                           [Cache write:data forLink:urlStr];
+
                                    [self updateImageWithData:data];
+
                                } else {
                                    self.imageView.image = [UIImage imageNamed:@"error.png"];
                                   [error log];

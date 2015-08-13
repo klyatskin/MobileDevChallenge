@@ -15,6 +15,7 @@
 		D15C2B981B7C212F00540FD5 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D15C2B971B7C212F00540FD5 /* CollectionViewCell.m */; };
 		D15C2BA11B7C262000540FD5 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = D15C2B9F1B7C262000540FD5 /* error.png */; };
 		D15C2BA21B7C262000540FD5 /* nil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D15C2BA01B7C262000540FD5 /* nil.jpg */; };
+		D15C2BA51B7C3DE200540FD5 /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = D15C2BA41B7C3DE200540FD5 /* Cache.m */; };
 		D1B31E7D1B7B8CEA00C094A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B31E7C1B7B8CEA00C094A5 /* Foundation.framework */; };
 		D1B31E7F1B7B8CEA00C094A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B31E7E1B7B8CEA00C094A5 /* CoreGraphics.framework */; };
 		D1B31E811B7B8CEA00C094A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B31E801B7B8CEA00C094A5 /* UIKit.framework */; };
@@ -56,6 +57,9 @@
 		D15C2B971B7C212F00540FD5 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewCell.m; path = Collection/CollectionViewCell.m; sourceTree = "<group>"; };
 		D15C2B9F1B7C262000540FD5 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
 		D15C2BA01B7C262000540FD5 /* nil.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nil.jpg; sourceTree = "<group>"; };
+		D15C2BA31B7C3DE200540FD5 /* Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cache.h; path = Utilities/Cache.h; sourceTree = "<group>"; };
+		D15C2BA41B7C3DE200540FD5 /* Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cache.m; path = Utilities/Cache.m; sourceTree = "<group>"; };
+		D15C2BA61B7C3EC100540FD5 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		D1B31E791B7B8CEA00C094A5 /* Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B31E7C1B7B8CEA00C094A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D1B31E7E1B7B8CEA00C094A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -104,8 +108,11 @@
 		D125546D1B7B9B77000BD96D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D15C2BA61B7C3EC100540FD5 /* Settings.h */,
 				D125546A1B7B9B66000BD96D /* Utilities.h */,
 				D125546B1B7B9B66000BD96D /* Utilities.m */,
+				D15C2BA31B7C3DE200540FD5 /* Cache.h */,
+				D15C2BA41B7C3DE200540FD5 /* Cache.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -337,6 +344,7 @@
 			files = (
 				D1B31E931B7B8CEA00C094A5 /* ViewController.m in Sources */,
 				D12554691B7B972A000BD96D /* PhotoDataSource.m in Sources */,
+				D15C2BA51B7C3DE200540FD5 /* Cache.m in Sources */,
 				D15C2B8C1B7C059400540FD5 /* NSError+Log.m in Sources */,
 				D15C2B981B7C212F00540FD5 /* CollectionViewCell.m in Sources */,
 				D1B31E8D1B7B8CEA00C094A5 /* AppDelegate.m in Sources */,

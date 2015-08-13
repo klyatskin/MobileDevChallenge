@@ -1,21 +1,19 @@
 //
-//  Utilities.h
+//  Cache.h
 //  Challenge
 //
 //  Created by Константин Кляцкин on 12.08.15.
 //  Copyright (c) 2015 Konstantin Klyatkin. All rights reserved.
 //
 
-
 #import <Foundation/Foundation.h>
 
-@interface Utilities : NSObject
+@interface Cache : NSObject
 
-
-+ (void)setNetworkActivity:(int)increment;
-+ (void)alertWithTitle:(NSString*)title message:(NSString*)message;
-
++(void)reset;
++(void)write:(NSData*)data forLink:(NSString*)link;
++(NSData*)readForLink:(NSString*)link;
++(Boolean)isActive;
++(void)setActive:(Boolean)on;
 
 @end
-
-
