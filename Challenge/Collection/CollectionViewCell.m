@@ -75,14 +75,14 @@
 
         NSUInteger no = self.indexToCache.item;
 
-        PhotoDataSource *psd = [PhotoDataSource sharedPhotoDataSource];
+        PhotoDataSource *pds = [PhotoDataSource sharedPhotoDataSource];
         if (no > 0) { // prev
-            NSString *url = [psd urlForPhoto:no-1 isCropped:NO];
+            NSString *url = [pds urlForPhoto:no-1 isCropped:NO];
             LazyImageView *livPrevous = [[LazyImageView alloc] initWithCallbackOnUpdate:nil];
             [livPrevous setUrl:url]; // start loading
         }
         // next
-        NSString *url = [psd urlForPhoto:no+1 isCropped:NO];
+        NSString *url = [pds urlForPhoto:no+1 isCropped:NO];
         if (url) {
             LazyImageView *livNext = [[LazyImageView alloc] initWithCallbackOnUpdate:nil];
             [livNext setUrl:url]; // start loading

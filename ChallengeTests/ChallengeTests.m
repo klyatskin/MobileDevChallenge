@@ -10,6 +10,7 @@
 
 #import "TestSemaphor.h"
 #import "PhotoDataSource.h"
+#import "LazyImageView.h"
 
 @interface ChallengeTests : XCTestCase
 
@@ -30,16 +31,44 @@
 
 - (void)testExample {
 
+    // step 1 - how many photos we get for 1 page? Answer = 20
+    // step 2 - what is the width od random image? Answer = 440.
+
+    LazyImageCallback onUpdateBlock = ^(LazyImageView *liv) {
+
+        UIImage *image = liv.image;
+
+        NSUInteger width = image.size.width;
+        printf("\n\nImage width %d\n\n", width);
+
+        if (width != 440) {
+            XCTFail(@"An image should be 440px.");
+            exit(1);
+        }
+
+        [[TestSemaphor sharedInstance] lift:@"liv"];
+        printf("\n\n Step2 - Success.\n\n");
+
+    };
 
     __unused PhotoDataSource *pds = [PhotoDataSource sharedPhotoDataSource].callbackOnUpdate = ^(PhotoDataSource *pds, NSUInteger count) {
 
         NSUInteger items = [pds lastPhotoLoaded];
         printf("\n\nDownloaded %d\n\n", items);
-        if (items != 20)
+        if (items != 20) {
             XCTFail(@"A first page should return 20 items.");
+            exit(1);
+        }
         [[TestSemaphor sharedInstance] lift:@"pds"];
-        printf("\n\nSuccess.\n\n");
+        printf("\n\n Step1 - Success.\n\n");
 
+
+        NSUInteger no = arc4random() % items;
+        NSString *url = [pds urlForPhoto:no isCropped:YES];
+        LazyImageView *liv = [[LazyImageView alloc] initWithCallbackOnUpdate:onUpdateBlock];
+        [liv setUrl:url]; // start loading
+
+        [[TestSemaphor sharedInstance] waitForKey:@"liv"];
     };
 
     [[TestSemaphor sharedInstance] waitForKey:@"pds"];
