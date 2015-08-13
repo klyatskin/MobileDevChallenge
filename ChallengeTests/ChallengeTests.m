@@ -29,7 +29,7 @@
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testExample1 {
 
     // step 1 - how many photos we get for 1 page? Answer = 20
     // step 2 - what is the width od random image? Answer = 440.
@@ -43,11 +43,8 @@
 
         if (width != 440) {
             XCTFail(@"An image should be 440px.");
-            exit(1);
         }
-
         [[TestSemaphor sharedInstance] lift:@"liv"];
-        printf("\n\n Step2 - Success.\n\n");
 
     };
 
@@ -57,21 +54,21 @@
         printf("\n\nDownloaded %d\n\n", items);
         if (items != 20) {
             XCTFail(@"A first page should return 20 items.");
-            exit(1);
         }
         [[TestSemaphor sharedInstance] lift:@"pds"];
-        printf("\n\n Step1 - Success.\n\n");
 
+        if (items) {
+            NSUInteger no = arc4random() % items;
+            NSString *url = [pds urlForPhoto:no isCropped:YES];
+            LazyImageView *liv = [[LazyImageView alloc] initWithCallbackOnUpdate:onUpdateBlock];
+            [liv setUrl:url]; // start loading
 
-        NSUInteger no = arc4random() % items;
-        NSString *url = [pds urlForPhoto:no isCropped:YES];
-        LazyImageView *liv = [[LazyImageView alloc] initWithCallbackOnUpdate:onUpdateBlock];
-        [liv setUrl:url]; // start loading
-
-        [[TestSemaphor sharedInstance] waitForKey:@"liv"];
+            [[TestSemaphor sharedInstance] waitForKey:@"liv"];
+        }
     };
 
     [[TestSemaphor sharedInstance] waitForKey:@"pds"];
 }
+
 
 @end

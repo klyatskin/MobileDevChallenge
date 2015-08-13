@@ -88,6 +88,9 @@ static  NSString * kCellIdentifier = @"CellIdentifier";
 
     NSLog(@"Loaded %d new photos, total %d", count, pds.lastPhotoLoaded);
 
+    if (count == 0) // nothing to do
+        return;
+
     // we have to update collection view as we have downloaded more items
 
     NSMutableArray *indexes = [NSMutableArray array];

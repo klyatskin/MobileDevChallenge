@@ -84,6 +84,8 @@ static PhotoDataSource *_photoDataSource;
                                    [error log];
                                    [Utilities alertWithTitle:@"500px" message:message];
 
+                                   if (self.callbackOnUpdate)
+                                       self.callbackOnUpdate(self, 0);
 
                                }
                            }];
@@ -133,7 +135,8 @@ static PhotoDataSource *_photoDataSource;
     }
 
     _lastPhotoLoaded += count;
-    self.callbackOnUpdate(self, count);
+    if (self.callbackOnUpdate)
+        self.callbackOnUpdate(self, count);
 }
 
 
