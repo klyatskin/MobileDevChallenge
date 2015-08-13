@@ -16,6 +16,7 @@
 		D15C2BA11B7C262000540FD5 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = D15C2B9F1B7C262000540FD5 /* error.png */; };
 		D15C2BA21B7C262000540FD5 /* nil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D15C2BA01B7C262000540FD5 /* nil.jpg */; };
 		D15C2BA51B7C3DE200540FD5 /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = D15C2BA41B7C3DE200540FD5 /* Cache.m */; };
+		D15F2BC61B7CBE880040B60C /* LazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D15F2BC51B7CBE880040B60C /* LazyImageView.m */; };
 		D1B31E7D1B7B8CEA00C094A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B31E7C1B7B8CEA00C094A5 /* Foundation.framework */; };
 		D1B31E7F1B7B8CEA00C094A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B31E7E1B7B8CEA00C094A5 /* CoreGraphics.framework */; };
 		D1B31E811B7B8CEA00C094A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B31E801B7B8CEA00C094A5 /* UIKit.framework */; };
@@ -60,6 +61,8 @@
 		D15C2BA31B7C3DE200540FD5 /* Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cache.h; path = Utilities/Cache.h; sourceTree = "<group>"; };
 		D15C2BA41B7C3DE200540FD5 /* Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cache.m; path = Utilities/Cache.m; sourceTree = "<group>"; };
 		D15C2BA61B7C3EC100540FD5 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		D15F2BC41B7CBE880040B60C /* LazyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LazyImageView.h; path = Collection/LazyImageView.h; sourceTree = "<group>"; };
+		D15F2BC51B7CBE880040B60C /* LazyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LazyImageView.m; path = Collection/LazyImageView.m; sourceTree = "<group>"; };
 		D1B31E791B7B8CEA00C094A5 /* Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1B31E7C1B7B8CEA00C094A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D1B31E7E1B7B8CEA00C094A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -153,6 +156,8 @@
 				D15C2B941B7C1FAA00540FD5 /* UICollectionViewSingleLayout.m */,
 				D15C2B961B7C212F00540FD5 /* CollectionViewCell.h */,
 				D15C2B971B7C212F00540FD5 /* CollectionViewCell.m */,
+				D15F2BC41B7CBE880040B60C /* LazyImageView.h */,
+				D15F2BC51B7CBE880040B60C /* LazyImageView.m */,
 			);
 			name = Collection;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 				D1B31E891B7B8CEA00C094A5 /* main.m in Sources */,
 				D15C2B951B7C1FAA00540FD5 /* UICollectionViewSingleLayout.m in Sources */,
 				D125546C1B7B9B66000BD96D /* Utilities.m in Sources */,
+				D15F2BC61B7CBE880040B60C /* LazyImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

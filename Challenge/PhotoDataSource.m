@@ -79,8 +79,12 @@ static PhotoDataSource *_photoDataSource;
                                    _lastPageLoaded = page;
                                    [self handlePageData:data];
                                } else {
-                                   NSLog(@"Failure withStatusCode = %d", statusCode);
+                                   NSString *message = [NSString stringWithFormat:@"Failure withStatusCode = %d", statusCode];
+                                   NSLog(@"%@",message);
                                    [error log];
+                                   [Utilities alertWithTitle:@"500px" message:message];
+
+
                                }
                            }];
 }
@@ -129,7 +133,7 @@ static PhotoDataSource *_photoDataSource;
     }
 
     _lastPhotoLoaded += count;
-    self.callbackUpdated(self, count);
+    self.callbackOnUpdate(self, count);
 }
 
 

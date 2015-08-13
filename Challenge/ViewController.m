@@ -34,7 +34,7 @@ static  NSString * kCellIdentifier = @"CellIdentifier";
     // initialze API and load first page
 
     PhotoDataSource * pds = [PhotoDataSource sharedPhotoDataSource]; // a call to init
-    pds.callbackUpdated = ^(PhotoDataSource *pds, NSUInteger count) {
+    pds.callbackOnUpdate = ^(PhotoDataSource *pds, NSUInteger count) {
         [self collectionIncreasedBy:count from:pds];
     };
 
@@ -65,7 +65,7 @@ static  NSString * kCellIdentifier = @"CellIdentifier";
 
     self.collectionView.frame = self.view.bounds;
 
-    NSLog(@"Loaded %d new photos", count);
+    NSLog(@"Loaded %d new photos, total %d", count, pds.lastPhotoLoaded);
 
     // we have to update collection view as we have downloaded more items
 

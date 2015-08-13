@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+
+
+#define CACHE_USE 0
+
+
 @interface Cache : NSObject
 
 +(void)reset;

@@ -13,7 +13,7 @@
 
 typedef void (^PhotoDataSourceCallback)(PhotoDataSource *ds, NSUInteger added);
 
-@property (nonatomic,copy) PhotoDataSourceCallback callbackUpdated;
+@property (nonatomic,copy) PhotoDataSourceCallback callbackOnUpdate;
 
 
 // # no check for multiple downloads of the same page !
