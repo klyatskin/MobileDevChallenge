@@ -123,17 +123,64 @@ static  NSString * kCellIdentifier = @"CellIdentifier";
     if (indexPath.item == pds.lastPhotoLoaded-1-10) // last one -10
         [pds loadPage:pds.lastPageLoaded+1];
 
-
     BOOL isCropped = self.collectionView.collectionViewLayout == self.gridLayout;
     [cell setImageByUrl:[[PhotoDataSource sharedPhotoDataSource] urlForPhoto:indexPath.item isCropped:isCropped]
              indexToCache:isCropped ? nil : indexPath];
+
     return cell;
+}
+
+
+#pragma mark - UICollectionView Animations
+
+- (void)hideCollectionAndEnlargeCellAtIndex:(NSIndexPath*)indexPath {
+
+    if (self.collectionView.collectionViewLayout == self.gridLayout) {
+        CollectionViewCell *cell = (CollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+        CGRect rectInCollectionView = cell.frame;
+        CGRect rect = [self.collectionView convertRect:rectInCollectionView toView:self.view];
+
+        UIImageView *iv = [[UIImageView alloc] initWithFrame:rect];
+        iv.image = [cell cellImageView].image;
+        iv.contentMode = UIViewContentModeScaleAspectFit;
+        [self.view addSubview:iv];
+
+        self.collectionView.alpha = 0;
+        [UIView animateWithDuration:0.5
+                         animations:^{
+                             iv.frame = self.view.bounds;
+                             iv.alpha = 0;
+                         }
+                         completion:^(BOOL finished){
+                             [iv removeFromSuperview];
+                         }];
+    } else {
+//        [UIView animateWithDuration:0.5
+//                         animations:^{
+//                             self.collectionView.alpha = 0;
+//                         }
+//         ];
+    }
+
+}
+
+- (void)showCollection {
+    [UIView animateWithDuration:0.5 animations:^{
+                         self.collectionView.alpha = 1;
+                     }
+     ];
 }
 
 
 #pragma mark - UICollectionView Delegate
 
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    // hide collection and enlarge cropped image to full screen
+    [self hideCollectionAndEnlargeCellAtIndex:indexPath];
+
+
     NSLog(@"Selected %d", indexPath.item);
 
     [collectionView deselectItemAtIndexPath:indexPath animated:NO];
@@ -145,6 +192,7 @@ static  NSString * kCellIdentifier = @"CellIdentifier";
         [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically | UICollectionViewScrollPositionCenteredHorizontally animated:NO];
         [self.collectionView reloadData];
 
+        [self showCollection];
     };
 
     if (self.collectionView.collectionViewLayout == self.gridLayout) {

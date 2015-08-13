@@ -11,6 +11,6 @@
 @interface CollectionViewCell : UICollectionViewCell
 
 -(void)setImageByUrl:(NSString *)urlStr indexToCache:(NSIndexPath*)indexPath;
-
+- (UIImageView*)cellImageView;
 
 @end

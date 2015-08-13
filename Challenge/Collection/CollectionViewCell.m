@@ -27,6 +27,13 @@
 
 @implementation CollectionViewCell
 
+#pragma mark - Getters
+
+- (UIImageView*)cellImageView {
+    return self.imageView;
+}
+
+
 
 #pragma mark - LifeCycle
 
