@@ -8,6 +8,9 @@
 
 #import <XCTest/XCTest.h>
 
+#import "TestSemaphor.h"
+#import "PhotoDataSource.h"
+
 @interface ChallengeTests : XCTestCase
 
 @end
@@ -17,7 +20,6 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown
@@ -26,9 +28,21 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+- (void)testExample {
+
+
+    __unused PhotoDataSource *pds = [PhotoDataSource sharedPhotoDataSource].callbackOnUpdate = ^(PhotoDataSource *pds, NSUInteger count) {
+
+        NSUInteger items = [pds lastPhotoLoaded];
+        printf("\n\nDownloaded %d\n\n", items);
+        if (items != 20)
+            XCTFail(@"A first page should return 20 items.");
+        [[TestSemaphor sharedInstance] lift:@"pds"];
+        printf("\n\nSuccess.\n\n");
+
+    };
+
+    [[TestSemaphor sharedInstance] waitForKey:@"pds"];
 }
 
 @end
