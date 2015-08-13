@@ -10,12 +10,16 @@
 #import "Utilities.h"
 #import "LazyImageView.h"
 
+// to cache preevious and next
+#import "PhotoDataSource.h"
+
 
 
 @interface CollectionViewCell () {
 }
 
 @property (nonatomic, strong) LazyImageView *imageView;
+@property (nonatomic, copy) NSIndexPath *indexToCache;
 
 
 @end
@@ -53,13 +57,38 @@
 }
 
 
-- (void)setImageByUrl:(NSString *)urlStr {
+-(void)setImageByUrl:(NSString *)urlStr indexToCache:(NSIndexPath*)indexPath {
+    self.indexToCache = indexPath;
     [self.imageView setUrl:urlStr];
 }
 
 
 - (void)cellUpdatedBy:(LazyImageView *)liv {
+
     NSLog(@"cell update = %@", NSStringFromCGSize(liv.image.size));
+
+    // as we have completed this cell we can start download the neibours
+    // cache either to file storage or internal iOS cache
+
+    if (self.indexToCache) {
+        // we cache previous and next image
+
+        NSUInteger no = self.indexToCache.item;
+
+        PhotoDataSource *psd = [PhotoDataSource sharedPhotoDataSource];
+        if (no > 0) { // prev
+            NSString *url = [psd urlForPhoto:no-1 isCropped:NO];
+            LazyImageView *livPrevous = [[LazyImageView alloc] initWithCallbackOnUpdate:nil];
+            [livPrevous setUrl:url]; // start loading
+        }
+        // next
+        NSString *url = [psd urlForPhoto:no+1 isCropped:NO];
+        if (url) {
+            LazyImageView *livNext = [[LazyImageView alloc] initWithCallbackOnUpdate:nil];
+            [livNext setUrl:url]; // start loading
+        }
+
+    }
 }
 
 @end

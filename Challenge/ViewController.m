@@ -122,7 +122,8 @@ static  NSString * kCellIdentifier = @"CellIdentifier";
 
 
     BOOL isCropped = self.collectionView.collectionViewLayout == self.gridLayout;
-    [cell setImageByUrl:[[PhotoDataSource sharedPhotoDataSource] urlForPhoto:indexPath.item isCropped:isCropped]];
+    [cell setImageByUrl:[[PhotoDataSource sharedPhotoDataSource] urlForPhoto:indexPath.item isCropped:isCropped]
+             indexToCache:isCropped ? nil : indexPath];
     return cell;
 }
 

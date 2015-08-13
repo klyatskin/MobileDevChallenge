@@ -10,7 +10,7 @@
 
 @interface CollectionViewCell : UICollectionViewCell
 
--(void)setImageByUrl:(NSString *)urlStr;
+-(void)setImageByUrl:(NSString *)urlStr indexToCache:(NSIndexPath*)indexPath;
 
 
 @end

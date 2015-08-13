@@ -50,6 +50,8 @@
         NSData *data = [Cache readForLink:urlStr];
         if (data) {
             [self updateImageWithData:data];
+            if (self.callbackOnUpdate)
+                self.callbackOnUpdate(self);
             return;
         }
     }
@@ -105,7 +107,8 @@
     if ([Cache isActive])
         [Cache write:self.mutableData forLink:self.imageUrl];
 
-    self.callbackOnUpdate(self);
+    if (self.callbackOnUpdate)
+        self.callbackOnUpdate(self);
     [self cancelConnection];
 }
 
