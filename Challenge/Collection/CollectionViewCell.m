@@ -28,9 +28,14 @@
 
 - (id)initWithFrame:(CGRect)frame {
 
+    LazyImageCallback onUpdateBlock = ^(LazyImageView *liv) {
+        [self cellUpdatedBy:liv];
+    };
+
+
     self = [super initWithFrame:frame];
     self.backgroundColor = [UIColor darkGrayColor];
-    self.imageView = [[LazyImageView alloc] initWithCallbackOnUpdate:nil];
+    self.imageView = [[LazyImageView alloc] initWithCallbackOnUpdate:onUpdateBlock];
     self.imageView.frame = CGRectInset(CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame)), 2, 2);
     self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.imageView.clipsToBounds = YES;
@@ -51,5 +56,8 @@
 }
 
 
+- (void)cellUpdatedBy:(LazyImageView *)liv {
+//    NSLog(@"cell update = %@", NSStringFromCGSize(liv.image.size));
+}
 
 @end

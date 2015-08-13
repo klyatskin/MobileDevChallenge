@@ -105,6 +105,7 @@
     if ([Cache isActive])
         [Cache write:self.mutableData forLink:self.imageUrl];
 
+    self.callbackOnUpdate(self);
     [self cancelConnection];
 }
 
