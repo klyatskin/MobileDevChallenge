@@ -90,7 +90,12 @@ static PhotoDataSource *_photoDataSource;
 
 - (void)handlePageData:(NSData *)data {
 
-    NSDictionary * jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSError *error = nil;
+    NSDictionary * jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    if (error) {
+        [error log];
+        return;
+    }
 
     NSInteger count = [jsonData[@"photos"] count];
 
