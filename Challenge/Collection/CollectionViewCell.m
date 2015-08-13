@@ -32,13 +32,15 @@
         [self cellUpdatedBy:liv];
     };
 
-
     self = [super initWithFrame:frame];
-    self.backgroundColor = [UIColor darkGrayColor];
+    self.backgroundColor = [UIColor blackColor];
     self.imageView = [[LazyImageView alloc] initWithCallbackOnUpdate:onUpdateBlock];
     self.imageView.frame = CGRectInset(CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame)), 2, 2);
     self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.imageView.clipsToBounds = YES;
+
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+
     [self.contentView addSubview:self.imageView];
 
     return self;
@@ -57,7 +59,7 @@
 
 
 - (void)cellUpdatedBy:(LazyImageView *)liv {
-//    NSLog(@"cell update = %@", NSStringFromCGSize(liv.image.size));
+    NSLog(@"cell update = %@", NSStringFromCGSize(liv.image.size));
 }
 
 @end

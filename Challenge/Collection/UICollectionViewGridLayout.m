@@ -10,4 +10,25 @@
 
 @implementation UICollectionViewGridLayout
 
+
+#define SPACE 0.0f
+#define ITEMS_IN_ROW 3
+
+
+-(id) init {
+
+    self = [super init];
+
+    CGFloat size = ([[UIScreen mainScreen] bounds].size.width - (ITEMS_IN_ROW+1) * SPACE) / ITEMS_IN_ROW;
+
+    self.itemSize = CGSizeMake(size, size);
+    self.sectionInset = UIEdgeInsetsMake(20+SPACE, SPACE, 0, SPACE);
+    self.minimumInteritemSpacing = SPACE;
+    self.minimumLineSpacing = SPACE;
+
+    [self setScrollDirection:UICollectionViewScrollDirectionVertical];
+
+    return self;
+}
+
 @end
