@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  UICollectionViewGridLayout.h
 //  Challenge
 //
 //  Created by Константин Кляцкин on 12.08.15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UICollectionViewController
+@interface UICollectionViewGridLayout : UICollectionViewFlowLayout
 
 @end
