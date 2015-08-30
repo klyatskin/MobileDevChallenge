@@ -174,12 +174,13 @@
 			name = Collection;
 			sourceTree = "<group>";
 		};
-		D15C2B9E1B7C262000540FD5 /* Images */ = {
+		D15C2B9E1B7C262000540FD5 /* Images (Temp) */ = {
 			isa = PBXGroup;
 			children = (
 				D15C2B9F1B7C262000540FD5 /* error.png */,
 				D15C2BA01B7C262000540FD5 /* nil.jpg */,
 			);
+			name = "Images (Temp)";
 			path = Images;
 			sourceTree = "<group>";
 		};
@@ -216,7 +217,7 @@
 		D1B31E821B7B8CEA00C094A5 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				D15C2B9E1B7C262000540FD5 /* Images */,
+				D15C2B9E1B7C262000540FD5 /* Images (Temp) */,
 				D15C2B8F1B7C1DE200540FD5 /* Collection */,
 				D15C2B8E1B7C1DB900540FD5 /* 500px API */,
 				D15C2B8D1B7C1D8A00540FD5 /* Controllers */,

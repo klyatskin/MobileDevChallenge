@@ -10,7 +10,7 @@
 
 
 
-#define CACHE_USE 1
+//#define CACHE_USE 1
 
 
 @interface Cache : NSObject

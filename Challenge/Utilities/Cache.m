@@ -26,8 +26,8 @@
 
 + (Boolean)isActive {
 
-    if (CACHE_USE == 0)
-        return NO;
+//    if (CACHE_USE == 0)
+//        return NO;
 
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kKeyLaunchedBefore] == NO) {
         // the very first launch

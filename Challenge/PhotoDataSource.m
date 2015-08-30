@@ -35,13 +35,15 @@ static const NSUInteger kFullImageSize = 1080;
 
 #pragma mark - Create Singleton
 
-static PhotoDataSource *_photoDataSource;
+
 
 + (PhotoDataSource *)sharedPhotoDataSource {
-	if (_photoDataSource == nil) {
+    static PhotoDataSource *_photoDataSource = nil;
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
 		_photoDataSource = [[PhotoDataSource alloc] init];
         [ _photoDataSource initialLoad];
-	}
+    });
 	return _photoDataSource;
 }
 
@@ -61,7 +63,7 @@ static PhotoDataSource *_photoDataSource;
     if ((self.totalPages != 0) && (page > self.totalPages))
         return;
 
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@?consumer_key=%@&image_size[]=%d&image_size[]=%d&page=%d", kAPIBaseUrl, kAPIEndPoint, CONSUMER_KEY, kCroppedImageSize, kFullImageSize, page];
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@?consumer_key=%@&image_size[]=%d&image_size[]=%d&page=%ld", kAPIBaseUrl, kAPIEndPoint, CONSUMER_KEY, kCroppedImageSize, kFullImageSize, (long)page];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
 
 
@@ -79,7 +81,7 @@ static PhotoDataSource *_photoDataSource;
                                    _lastPageLoaded = page;
                                    [self handlePageData:data];
                                } else {
-                                   NSString *message = [NSString stringWithFormat:@"Failure withStatusCode = %d", statusCode];
+                                   NSString *message = [NSString stringWithFormat:@"Failure withStatusCode = %ld", (long)statusCode];
                                    NSLog(@"%@",message);
                                    [error log];
                                    [Utilities alertWithTitle:@"500px" message:message];

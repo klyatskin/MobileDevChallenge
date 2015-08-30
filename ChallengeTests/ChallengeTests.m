@@ -39,7 +39,7 @@
         UIImage *image = liv.image;
 
         NSUInteger width = image.size.width;
-        printf("\n\nImage width %d\n\n", width);
+        printf("\n\nImage width %ld\n\n", (long)width);
 
         if (width != 440) {
             XCTFail(@"An image should be 440px.");
@@ -51,7 +51,7 @@
     __unused PhotoDataSource *pds = [PhotoDataSource sharedPhotoDataSource].callbackOnUpdate = ^(PhotoDataSource *pds, NSUInteger count) {
 
         NSUInteger items = [pds lastPhotoLoaded];
-        printf("\n\nDownloaded %d\n\n", items);
+        printf("\n\nDownloaded %ld\n\n", (long)items);
         if (items != 20) {
             XCTFail(@"A first page should return 20 items.");
         }

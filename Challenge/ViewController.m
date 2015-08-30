@@ -45,7 +45,8 @@ static  NSString * kCellIdentifier = @"CellIdentifier";
     // initialze API and load first page
     PhotoDataSource * pds = [PhotoDataSource sharedPhotoDataSource]; // a call to init
     pds.callbackOnUpdate = ^(PhotoDataSource *pds, NSUInteger count) {
-        [self collectionIncreasedBy:count from:pds];
+        __weak id weakSelf = self;
+        [weakSelf collectionIncreasedBy:count from:pds];
     };
 
 
@@ -86,7 +87,7 @@ static  NSString * kCellIdentifier = @"CellIdentifier";
 
     self.collectionView.frame = self.view.bounds;
 
-    NSLog(@"Loaded %d new photos, total %d", count, pds.lastPhotoLoaded);
+    NSLog(@"Loaded %ld new photos, total %ld", (long)count, (long)pds.lastPhotoLoaded);
 
     if (count == 0) // nothing to do
         return;
@@ -181,7 +182,7 @@ static  NSString * kCellIdentifier = @"CellIdentifier";
     [self hideCollectionAndEnlargeCellAtIndex:indexPath];
 
 
-    NSLog(@"Selected %d", indexPath.item);
+    NSLog(@"Selected %ld", (long)indexPath.item);
 
     [collectionView deselectItemAtIndexPath:indexPath animated:NO];
     [self.collectionView.collectionViewLayout invalidateLayout];

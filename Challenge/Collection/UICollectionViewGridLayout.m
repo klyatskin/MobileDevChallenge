@@ -12,7 +12,7 @@
 
 
 #define SPACE 0.0f
-#define ITEMS_IN_ROW 2
+#define ITEMS_IN_ROW 4
 
 
 -(id) init {
