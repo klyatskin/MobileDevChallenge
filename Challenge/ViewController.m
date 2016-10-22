@@ -20,7 +20,7 @@
 
 @property (nonatomic, strong) UICollectionViewGridLayout *gridLayout;
 @property (nonatomic, strong) UICollectionViewSingleLayout *singleLayout;
-@property (nonatomic, strong) UICollectionView *collectionView;
+//@property (nonatomic, strong) UICollectionView *collectionView;
 
 
 @end

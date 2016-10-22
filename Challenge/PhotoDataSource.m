@@ -63,7 +63,7 @@ static const NSUInteger kFullImageSize = 1080;
     if ((self.totalPages != 0) && (page > self.totalPages))
         return;
 
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@?consumer_key=%@&image_size[]=%d&image_size[]=%d&page=%ld", kAPIBaseUrl, kAPIEndPoint, CONSUMER_KEY, kCroppedImageSize, kFullImageSize, (long)page];
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@?consumer_key=%@&image_size[]=%lu&image_size[]=%lu&page=%ld", kAPIBaseUrl, kAPIEndPoint, CONSUMER_KEY, (unsigned long)kCroppedImageSize, (unsigned long)kFullImageSize, (long)page];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
 
 

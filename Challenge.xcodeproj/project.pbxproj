@@ -32,6 +32,7 @@
 		D1B31E9E1B7B8CEA00C094A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B31E801B7B8CEA00C094A5 /* UIKit.framework */; };
 		D1B31EA61B7B8CEA00C094A5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1B31EA41B7B8CEA00C094A5 /* InfoPlist.strings */; };
 		D1B31EA81B7B8CEA00C094A5 /* ChallengeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B31EA71B7B8CEA00C094A5 /* ChallengeTests.m */; };
+		D1DB2EB81BC4AD560076441A /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = D1DB2EB71BC4AD560076441A /* NSData+MD5.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		D1B31EA31B7B8CEA00C094A5 /* ChallengeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChallengeTests-Info.plist"; sourceTree = "<group>"; };
 		D1B31EA51B7B8CEA00C094A5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D1B31EA71B7B8CEA00C094A5 /* ChallengeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChallengeTests.m; sourceTree = "<group>"; };
+		D1DB2EB61BC4AD560076441A /* NSData+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+MD5.h"; path = "Categories/NSData+MD5.h"; sourceTree = "<group>"; };
+		D1DB2EB71BC4AD560076441A /* NSData+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+MD5.m"; path = "Categories/NSData+MD5.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +140,8 @@
 			children = (
 				D15C2B8A1B7C059400540FD5 /* NSError+Log.h */,
 				D15C2B8B1B7C059400540FD5 /* NSError+Log.m */,
+				D1DB2EB61BC4AD560076441A /* NSData+MD5.h */,
+				D1DB2EB71BC4AD560076441A /* NSData+MD5.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -306,7 +311,7 @@
 		D1B31E711B7B8CEA00C094A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Konstantin Klyatkin";
 				TargetAttributes = {
 					D1B31E991B7B8CEA00C094A5 = {
@@ -368,6 +373,7 @@
 				D15C2B981B7C212F00540FD5 /* CollectionViewCell.m in Sources */,
 				D1B31E8D1B7B8CEA00C094A5 /* AppDelegate.m in Sources */,
 				D15C2B921B7C1F8C00540FD5 /* UICollectionViewGridLayout.m in Sources */,
+				D1DB2EB81BC4AD560076441A /* NSData+MD5.m in Sources */,
 				D1B31E891B7B8CEA00C094A5 /* main.m in Sources */,
 				D15C2B951B7C1FAA00540FD5 /* UICollectionViewSingleLayout.m in Sources */,
 				D125546C1B7B9B66000BD96D /* Utilities.m in Sources */,
@@ -435,14 +441,20 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -455,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -474,21 +486,26 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -502,7 +519,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Challenge/Challenge-Prefix.pch";
 				INFOPLIST_FILE = "Challenge/Challenge-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.planetdrives.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -517,7 +535,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Challenge/Challenge-Prefix.pch";
 				INFOPLIST_FILE = "Challenge/Challenge-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.planetdrives.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -540,6 +559,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "ChallengeTests/ChallengeTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.planetdrives.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -558,6 +578,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Challenge/Challenge-Prefix.pch";
 				INFOPLIST_FILE = "ChallengeTests/ChallengeTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.planetdrives.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

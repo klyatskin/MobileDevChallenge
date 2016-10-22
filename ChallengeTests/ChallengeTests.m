@@ -48,7 +48,8 @@
 
     };
 
-    __unused PhotoDataSource *pds = [PhotoDataSource sharedPhotoDataSource].callbackOnUpdate = ^(PhotoDataSource *pds, NSUInteger count) {
+    PhotoDataSource *pds = [PhotoDataSource sharedPhotoDataSource];
+    pds.callbackOnUpdate = ^(PhotoDataSource *pds, NSUInteger count) {
 
         NSUInteger items = [pds lastPhotoLoaded];
         printf("\n\nDownloaded %ld\n\n", (long)items);
